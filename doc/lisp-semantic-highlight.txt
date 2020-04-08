@@ -1,0 +1,84 @@
+*semantic-highlight.txt*
+                                                *semantic-highlight*
+
+==============================================================================
+CONTENTS                                        *semantic-highlight-contents*
+
+Variables                                       |semantic-highlight-variables|
+
+------------------------------------------------------------------------------
+VARIABLES                                       *semantic-highlight-variables*
+
+g:semanticGUIColors                             *g:semanticGUIColors*
+
+Override this with an array of hex values to change the list of colors the
+plugin will use when in GUI mode.
+
+let g:semanticGUIColors = ['#FFF', '#000']
+
+g:semanticTermColors                            *g:semanticTermColors*
+
+Override this with an array of numeric values to change the list of colors the
+plugin will use when in CLI mode.
+
+let g:semanticGUIColors = [1, 2]
+
+g:semanticUseCache                              *g:semanticUseCache*
+
+By default the plugin will cache color values in order to provide a more
+consistent coloration across files.
+
+To turn this off, set this to 0
+
+let g:semanticUseCache = 0
+
+g:semanticEnableBlacklist                       *g:semanticEnableBlacklist*
+
+By default the plugin will use an internal blacklist to ensure language
+keywords are not colored.
+
+To disable this behaviour, set this to 0
+
+let g:semanticEnableBlacklist = 0
+
+g:semanticBlacklistOverride                     *g:semanticBlacklistOverride*
+
+The plugin uses an internal object to load keywords.
+
+To replace the keyword list, provide an override object as below:
+
+let g:semanticBlacklistOverride = { 'lisp': ['this', 'that', 'the_other'] }
+
+g:semanticEnableFileTypes                       *g:semanticEnableFileTypes*
+
+The plugin can be configured to activate automatically.
+
+There are three possible behaviours, off, filetype only and filetype +
+cursorhold.
+
+filetype:
+
+This will automatically start the plugin when entering a file.
+
+let g:semanticEnableFileTypes = ['lisp']
+
+filetype + cursorhold:
+
+This will automatically start the plugin when entering a file, 
+and re-render on cursorhold.
+
+let g:semanticEnableFileTypes = { 'lisp': 'lisp' }
+
+g:semanticPersistCache                     *g:semanticPersistCache*
+
+Set this to 1 to allow persistent color values across vim sessions
+
+Default value is 0
+
+g:semanticPersistCacheLocation             *g:semanticPersistCacheLocation*
+
+The location of the persisted color values.
+
+Default is $HOME/.semantic-highlight-cache-lisp
+
+vim:tw=78:ts=8:ft=help:norl:
