@@ -1,6 +1,7 @@
 # Lisp-Semantic-Highlight.vim
 
 Where every variable is a different color, an idea popularized by <a href="https://medium.com/@evnbr/coding-in-color-3a6db2743a1e">Evan Brooks'</a> blog post.
+
 This plugin is based on the 'jaxbot/semantic-highlight.vim' plugin.
 
 ## Install
@@ -29,6 +30,8 @@ You can also map `:SemanticHighlightToggle` to a shortcut to toggle the effect o
 
 ## Customization
 
+Please note that semantic highlight in Vim looks better with a white-n-black color theme, for example, 'monochrome' theme.
+
 Set `g:semanticTermColors` and/or `g:semanticGUIColors` to a list of colors, then run `RebuildSemanticColors` to flush the cache. The color lists look like:
 
 ```
@@ -37,6 +40,6 @@ let s:semanticGUIColors = [ '#72d572', '#c5e1a5', '#e6ee9c', '#fff59d', '#ffe082
 or
 
 ```
-let g:semanticTermColors = [28,1,2,3,4,5,6,7,25,9,10,34,12,13,14,15,16,125,124,19]
+let g:semanticTermColors = [1,2,3,4,5,6,7,8,9,10,11,12,13,14]
 ```
 
