@@ -7,25 +7,25 @@ let s:semanticTermColors = range(1, 14)
 
 " The user can change the GUI/Term colors, but cannot directly access the list of colors we use
 " If the user overrode the default in their vimrc, use that
-let g:lisp_semanticGUIColors = exists('g:lisp_semanticGUIColors') ? g:lisp_semanticGUIColors : s:semanticGUIColors
-let g:lisp_semanticTermColors = exists('g:lisp_semanticTermColors') ? g:lisp_semanticTermColors : s:semanticTermColors
+let g:semanticLispGUIColors = exists('g:semanticLispGUIColors') ? g:semanticLispGUIColors : s:semanticGUIColors
+let g:semanticLispTermColors = exists('g:semanticLispTermColors') ? g:semanticLispTermColors : s:semanticTermColors
 
 " Allow the user to turn cache off
-let g:lisp_semanticUseCache = exists('g:lisp_semanticUseCache') ? g:lisp_semanticUseCache : 1
-let g:lisp_semanticPersistCache = exists('g:lisp_semanticPersistCache') ? g:lisp_semanticPersistCache : 1
-let g:lisp_semanticPersistCacheLocation = exists('g:lisp_semanticPersistCacheLocation') ? g:lisp_semanticPersistCacheLocation : $HOME . '/.semantic-highlight-cache-lisp'
+let g:semanticLispUseCache = exists('g:semanticLispUseCache') ? g:semanticLispUseCache : 1
+let g:semanticLispPersistCache = exists('g:semanticLispPersistCache') ? g:semanticLispPersistCache : 1
+let g:semanticLispPersistCacheLocation = exists('g:semanticLispPersistCacheLocation') ? g:semanticLispPersistCacheLocation : $XDG_CACHE_HOME . '/vim/semantic-highlight-cache-lisp'
 
 " Allow the user to override blacklists
-let g:lisp_semanticEnableBlacklist = exists('g:lisp_semanticEnableBlacklist') ? g:lisp_semanticEnableBlacklist : 1
+let g:semanticLispEnableBlacklist = exists('g:semanticLispEnableBlacklist') ? g:semanticLispEnableBlacklist : 1
 
 let s:blacklist = {}
-if g:lisp_semanticEnableBlacklist
+if g:semanticLispEnableBlacklist
 	let s:blacklist = lisp_blacklist#GetBlacklist()
 endif
 
 let s:containedinlist = lisp_containedinlist#GetContainedinlist()
 
-let g:lisp_semanticUseBackground = 0
+let g:semanticLispUseBackground = 0
 let s:hasBuiltColors = 0
 
 command! LispSemanticHighlight call s:semHighlight()
@@ -34,12 +34,12 @@ command! LispSemanticHighlightToggle call s:toggleHighlight()
 command! LispRebuildSemanticColors call s:buildColors()
 
 function! s:readCache() abort
-	if !filereadable(g:lisp_semanticPersistCacheLocation)
+	if !filereadable(g:semanticLispPersistCacheLocation)
 		return []
 	endif
 
 	let l:localCache = {}
-	let s:cacheList = readfile(g:lisp_semanticPersistCacheLocation)
+	let s:cacheList = readfile(g:semanticLispPersistCacheLocation)
 	for s:cacheListItem in s:cacheList
 		let s:cacheListItemList = eval(s:cacheListItem)
 		let l:localCache[s:cacheListItemList[0]] = s:cacheListItemList[1]
@@ -54,7 +54,7 @@ endfunction
 
 let s:cache = {}
 let b:cache_defined = {}
-if g:lisp_semanticPersistCache && filereadable(g:lisp_semanticPersistCacheLocation)
+if g:semanticLispPersistCache && filereadable(g:semanticLispPersistCacheLocation)
 	let s:cache = s:readCache()
 endif
 
@@ -67,11 +67,11 @@ function! s:persistCache()
 		call add(l:cacheList, string([match, color]))
 		unlet match color
 	endfor
-	call writefile(l:cacheList, g:lisp_semanticPersistCacheLocation)
+	call writefile(l:cacheList, g:semanticLispPersistCacheLocation)
 endfunction
 
 function! s:getCachedColor(current_color, match)
-	if !g:lisp_semanticUseCache
+	if !g:semanticLispUseCache
 		return a:current_color
 	endif
 
@@ -124,7 +124,7 @@ function! s:semHighlight()
 endfunction
 
 function! s:buildColors()
-	if (g:lisp_semanticUseBackground)
+	if (g:semanticLispUseBackground)
 		let type = 'bg'
 	else
 		let type = 'fg'
@@ -132,11 +132,11 @@ function! s:buildColors()
 	if $NVIM_TUI_ENABLE_TRUE_COLOR || has('gui_running') || (exists('&guicolors') && &guicolors) || (exists('&termguicolors') && &termguicolors)
 		let colorType = 'gui'
 		" Update color list in case the user made any changes
-		let s:semanticColors = g:lisp_semanticGUIColors
+		let s:semanticColors = g:semanticLispGUIColors
 	else
 		let colorType = 'cterm'
 		" Update color list in case the user made any changes
-		let s:semanticColors = g:lisp_semanticTermColors
+		let s:semanticColors = g:semanticLispTermColors
 	endif
 
 	let semIndex = 0

@@ -9,47 +9,47 @@ Variables                                       |semantic-highlight-variables|
 ------------------------------------------------------------------------------
 VARIABLES                                       *semantic-highlight-variables*
 
-g:lisp_semanticGUIColors                             *g:lisp_semanticGUIColors*
+g:semanticLispGUIColors                             *g:semanticLispGUIColors*
 
 Override this with an array of hex values to change the list of colors the
 plugin will use when in GUI mode.
 
-let g:lisp_semanticGUIColors = ['#FFF', '#000']
+let g:semanticLispGUIColors = ['#FFF', '#000']
 
-g:lisp_semanticTermColors                            *g:lisp_semanticTermColors*
+g:semanticLispTermColors                            *g:semanticLispTermColors*
 
 Override this with an array of numeric values to change the list of colors the
 plugin will use when in CLI mode.
 
-let g:lisp_semanticGUIColors = [1, 2]
+let g:semanticLispGUIColors = [1, 2]
 
-g:lisp_semanticUseCache                              *g:lisp_semanticUseCache*
+g:semanticLispUseCache                              *g:semanticLispUseCache*
 
 By default the plugin will cache color values in order to provide a more
 consistent coloration across files.
 
 To turn this off, set this to 0
 
-let g:lisp_semanticUseCache = 0
+let g:semanticLispUseCache = 0
 
-g:lisp_semanticEnableBlacklist                       *g:lisp_semanticEnableBlacklist*
+g:semanticLispEnableBlacklist                       *g:semanticLispEnableBlacklist*
 
 By default the plugin will use an internal blacklist to ensure language
 keywords are not colored.
 
 To disable this behaviour, set this to 0
 
-let g:lisp_semanticEnableBlacklist = 0
+let g:semanticLispEnableBlacklist = 0
 
-g:lisp_semanticBlacklistOverride                     *g:lisp_semanticBlacklistOverride*
+g:semanticLispBlacklistOverride                     *g:semanticLispBlacklistOverride*
 
 The plugin uses an internal object to load keywords.
 
 To replace the keyword list, provide an override object as below:
 
-let g:lisp_semanticBlacklistOverride = { 'lisp': ['this', 'that', 'the_other'] }
+let g:semanticLispBlacklistOverride = { 'lisp': ['this', 'that', 'the_other'] }
 
-g:lisp_semanticEnableFileTypes                       *g:lisp_semanticEnableFileTypes*
+g:semanticLispEnableFileTypes                       *g:semanticLispEnableFileTypes*
 
 The plugin can be configured to activate automatically.
 
@@ -60,22 +60,22 @@ filetype:
 
 This will automatically start the plugin when entering a file.
 
-let g:lisp_semanticEnableFileTypes = ['lisp']
+let g:semanticLispEnableFileTypes = ['lisp']
 
 filetype + cursorhold:
 
 This will automatically start the plugin when entering a file, 
 and re-render on cursorhold.
 
-let g:lisp_semanticEnableFileTypes = { 'lisp': 'lisp' }
+let g:semanticLispEnableFileTypes = { 'lisp': 'lisp' }
 
-g:lisp_semanticPersistCache                     *g:lisp_semanticPersistCache*
+g:semanticLispPersistCache                     *g:semanticLispPersistCache*
 
 Set this to 1 to allow persistent color values across vim sessions
 
 Default value is 0
 
-g:lisp_semanticPersistCacheLocation             *g:lisp_semanticPersistCacheLocation*
+g:semanticLispPersistCacheLocation             *g:semanticLispPersistCacheLocation*
 
 The location of the persisted color values.
 

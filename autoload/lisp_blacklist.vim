@@ -945,8 +945,8 @@ let s:blacklist = {
 	\ ],
 	\ }
 
-if (exists('g:lisp_semanticBlacklistOverride'))
-	let s:blacklist = extend(s:blacklist, g:lisp_semanticBlacklistOverride)
+if (exists('g:semanticLispBlacklistOverride'))
+	let s:blacklist = extend(s:blacklist, g:semanticLispBlacklistOverride)
 endif
 
 function! lisp_blacklist#GetBlacklist()
