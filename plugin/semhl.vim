@@ -13,7 +13,7 @@ let g:semanticLispTermColors = exists('g:semanticLispTermColors') ? g:semanticLi
 " Allow the user to turn cache off
 let g:semanticLispUseCache = exists('g:semanticLispUseCache') ? g:semanticLispUseCache : 1
 let g:semanticLispPersistCache = exists('g:semanticLispPersistCache') ? g:semanticLispPersistCache : 1
-let g:semanticLispPersistCacheLocation = exists('g:semanticLispPersistCacheLocation') ? g:semanticLispPersistCacheLocation : $XDG_CACHE_HOME . '/vim/semantic-highlight-cache-lisp'
+let g:semanticLispPersistCacheLocation = exists('g:semanticLispPersistCacheLocation') ? g:semanticLispPersistCacheLocation : $HOME . '/.semantic-highlight-cache-lisp'
 
 " Allow the user to override blacklists
 let g:semanticLispEnableBlacklist = exists('g:semanticLispEnableBlacklist') ? g:semanticLispEnableBlacklist : 1
